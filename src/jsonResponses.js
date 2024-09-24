@@ -1,5 +1,6 @@
 const users = {};
 
+// is add users ok now for if name or age is not included bad request instead an and there**
 const respondJSON = (request, response, status, object) => {
   const content = JSON.stringify(object);
 
@@ -50,7 +51,7 @@ const addUser = (request, response) => {
   const responseJSON = {
     message: 'Name and age are both required.',
   };
-  if (!request.body.name && !request.body.age) {
+  if (!request.body.name || !request.body.age) {
     responseJSON.id = 'addUserMissingParams';
     return respondJSON(request, response, 400, responseJSON);
   }
